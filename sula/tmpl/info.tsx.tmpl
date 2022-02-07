@@ -1,0 +1,39 @@
+// @RadicalOverwrite YES
+// @RadicalGenerateTime {{generateTime}}
+import React from 'react';
+import { CreateForm } from 'sula';
+import { Card } from 'antd';
+import FormConfig from "./formconfig"
+const apiUrl = "{{apiPrefix}}/{{modelName}}";
+
+export default class Base extends React.Component {
+  state = {
+    remoteValues: null,
+  };
+
+  async componentDidMount() {
+    const { location: { query: { {{lowerFirstPrimaryKey}} } } } = this.props;
+    const remoteValues = {
+      url: apiUrl+"/"+{{modelPrimaryKey|lowerFirst}} ,
+      method: "get",
+    }
+
+    this.setState({
+      remoteValues,
+    })
+  }
+
+  render() {
+    const { remoteValues,submit } = this.state
+
+    return (
+      <Card>
+        { remoteValues && <CreateForm
+          {...FormConfig.config}
+          remoteValues={ remoteValues }
+          mode = "view"
+        /> }
+      </Card>
+    );
+  }
+}

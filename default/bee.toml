@@ -1,0 +1,34 @@
+renderPath = "tmpl"
+[default]
+   pathRadiant = "."
+[[descriptor]]
+    module = "controllers"
+    srcName = "radical_default_controller.go.tmpl"
+    dstPath = "{{pathRadiant}}/controllers/radical_default_controller.go"
+    once = true
+[[descriptor]]
+    module = "controllers"
+    srcName = "controller.go.tmpl"
+    dstPath = "{{pathRadiant}}/controllers/{{modelName}}.go"
+[[descriptor]]
+    module = "models"
+    srcName = "radical_default_model.go.tmpl"
+    dstPath = "{{pathRadiant}}/models/radical_default_model.go"
+    once = true
+[[descriptor]]
+    module = "models"
+    srcName = "model.go.tmpl"
+    dstPath = "{{pathRadiant}}/models/{{modelName}}.go"
+[[descriptor]]
+    module = "routers"
+    srcName = "router.go.tmpl"
+    dstPath = "{{pathRadiant}}/routers/{{modelName}}.go"
+[[descriptor]]
+    module = "sqlUp"
+    srcName = "up.sql.tmpl"
+    dstPath = "{{pathRadiant}}/sql/{{modelName}}_up.sql"
+    script = "radical pro migration --sql={{pathRadiant}}/sql/{{modelName}}_up.sql"
+[[descriptor]]
+    module = "sqlDown"
+    srcName = "down.sql.tmpl"
+    dstPath = "{{pathRadiant}}/sql/{{modelName}}_down.sql"

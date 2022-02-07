@@ -1,0 +1,16 @@
+// @RadicalOverwrite YES
+// @RadicalGenerateTime {{generateTime}}
+package routers
+
+import (
+	"{{packagePath}}/controllers"
+	radiant "github.com/W3-Engineers-Ltd/Radiant/server/web"
+)
+
+func init() {
+	radiant.Router("{{apiPrefix}}/{{modelName}}", &controllers.{{modelName|upperFirst}}Controller{}, "get:GetAll")
+	radiant.Router("{{apiPrefix}}/{{modelName}}/:id", &controllers.{{modelName|upperFirst}}Controller{}, "get:GetOne")
+	radiant.Router("{{apiPrefix}}/{{modelName}}", &controllers.{{modelName|upperFirst}}Controller{}, "post:Post")
+	radiant.Router("{{apiPrefix}}/{{modelName}}/:id", &controllers.{{modelName|upperFirst}}Controller{}, "put:Put")
+	radiant.Router("{{apiPrefix}}/{{modelName}}/:id", &controllers.{{modelName|upperFirst}}Controller{}, "delete:Delete")
+}
